@@ -1,9 +1,8 @@
-import boto3
-import yaml
 import streamlit as st
 from io import BytesIO
 import logging
 import time
+
 
 def get_url_geos(file_name):
     try:
@@ -40,7 +39,13 @@ def get_object_url(bucket_name, object_key, s3_client):
 
 
 def download_and_upload_s3_file(
-    src_bucket, src_object, dest_bucket, dest_folder, dest_object, s3_client, s3_client_logs
+    src_bucket,
+    src_object,
+    dest_bucket,
+    dest_folder,
+    dest_object,
+    s3_client,
+    s3_client_logs,
 ):
     # Read the S3 object as a bytes object
     write_logs(f"Downloading {src_object} from {src_bucket}", s3_client_logs)
@@ -50,7 +55,7 @@ def download_and_upload_s3_file(
     write_logs("Downloading completed", s3_client_logs)
     write_logs(
         f"uploading {src_object} from {src_bucket} to {dest_bucket} under {dest_folder}",
-        s3_client_logs
+        s3_client_logs,
     )
     dest_path = dest_folder + "/" + dest_object
     # Upload the bytes object to another S3 bucket

@@ -156,5 +156,5 @@ if copy_files:
         "nexrad",
         selected_file,
         s3_client,
-        s3_client_logs
+        s3_client_logs,
     )
